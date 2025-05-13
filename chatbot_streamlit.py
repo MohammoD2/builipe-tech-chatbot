@@ -42,7 +42,7 @@ st.set_page_config(
     page_icon="images/r.png",
     layout="wide" 
 )
-st.title("🤖 Bulipe Tech Services based Chatbot")
+st.title("Bulipe Tech Services based Chatbot")
 set_custom_style("images/B.jpg")
 # Initialize chat history
 if "messages" not in st.session_state:
