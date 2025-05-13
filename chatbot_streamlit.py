@@ -4,6 +4,11 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 import base64
 
+st.set_page_config(
+    page_title="Bulipe chatbot",
+    page_icon="images/logo.png",
+    layout="wide" 
+)
 
 def set_custom_style(background_image_path, sidebar_image_path):
     with open(background_image_path, "rb") as image:
@@ -94,11 +99,6 @@ def embed_questions(questions):
 
 question_embeddings = embed_questions(df["Input"].tolist())
 
-st.set_page_config(
-    page_title="Bulipe chatbot",
-    page_icon="images/logo.png",
-    layout="wide" 
-)
 st.title("Bulipe Tech Services based Chatbot")
 set_custom_style("images/B.jpg", "images/sidebar.jpg")
 # Initialize chat history
