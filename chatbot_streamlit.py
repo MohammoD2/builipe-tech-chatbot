@@ -23,7 +23,7 @@ def set_custom_style(background_image_path):
 # Load data
 @st.cache_data
 def load_data():
-    return pd.read_excel("data.xlsx")[["Input", "Response"]].dropna()
+    return pd.read_excel("data\processed\data.xlsx")[["Input", "Response"]].dropna()
 
 df = load_data()
 
@@ -39,11 +39,11 @@ question_embeddings = embed_questions(df["Input"].tolist())
 
 st.set_page_config(
     page_title="Bulipe chatbot",
-    page_icon="r.png",
+    page_icon="images/r.png",
     layout="wide" 
 )
 st.title("🤖 Bulipe Tech Services based Chatbot")
-set_custom_style("B.jpg")
+set_custom_style("images/B.jpg")
 # Initialize chat history
 if "messages" not in st.session_state:
     st.session_state.messages = [{
