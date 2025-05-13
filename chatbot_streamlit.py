@@ -23,7 +23,7 @@ def set_custom_style(background_image_path):
 # Load data
 @st.cache_data
 def load_data():
-    return pd.read_excel("data\processed\data.xlsx")[["Input", "Response"]].dropna()
+    return pd.read_excel("data.xlsx")[["Input", "Response"]].dropna()
 
 df = load_data()
 
