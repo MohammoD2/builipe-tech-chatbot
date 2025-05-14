@@ -1,30 +1,24 @@
-# -*- coding: utf-8 -*-
-import click
-import logging
-from pathlib import Path
-from dotenv import find_dotenv, load_dotenv
+import pandas as pd
+import json
 
+# Input and output filenames
+excel_file = 'data.xlsx'
+json_file = 'knowledge_base.json'
 
-@click.command()
-@click.argument('input_filepath', type=click.Path(exists=True))
-@click.argument('output_filepath', type=click.Path())
-def main(input_filepath, output_filepath):
-    """ Runs data processing scripts to turn raw data from (../raw) into
-        cleaned data ready to be analyzed (saved in ../processed).
-    """
-    logger = logging.getLogger(__name__)
-    logger.info('making final data set from raw data')
+# Read Excel file
+df = pd.read_excel(excel_file)
 
+# Convert to desired JSON format
+formatted_data = []
+for idx, row in df.iterrows():
+    formatted_data.append({
+        "id": idx + 1,
+        "question": str(row['Input']).strip(),
+        "answer": str(row['Response']).strip()
+    })
 
-if __name__ == '__main__':
-    log_fmt = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-    logging.basicConfig(level=logging.INFO, format=log_fmt)
+# Write to JSON file
+with open(json_file, 'w', encoding='utf-8') as f:
+    json.dump(formatted_data, f, indent=2)
 
-    # not used in this stub but often useful for finding various files
-    project_dir = Path(__file__).resolve().parents[2]
-
-    # find .env automagically by walking up directories until it's found, then
-    # load up the .env entries as environment variables
-    load_dotenv(find_dotenv())
-
-    main()
+print(f"Converted {excel_file} to {json_file} successfully.")

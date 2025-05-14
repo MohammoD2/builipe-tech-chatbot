@@ -87,3 +87,10 @@ target/
 
 # Mypy cache
 .mypy_cache/
+lora_model
+venv1
+knowledge_base.json
+process1.py
+process2.py
+process3.py
+chroma_store
