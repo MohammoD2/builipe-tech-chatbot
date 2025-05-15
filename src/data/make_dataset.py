@@ -1,24 +1,21 @@
 import pandas as pd
 import json
 
-# Input and output filenames
-excel_file = 'data.xlsx'
-json_file = 'knowledge_base.json'
-
-# Read Excel file
-df = pd.read_excel(excel_file)
+# Load the Excel file
+df = pd.read_excel("data.xlsx")
 
 # Convert to desired JSON format
-formatted_data = []
-for idx, row in df.iterrows():
-    formatted_data.append({
-        "id": idx + 1,
-        "question": str(row['Input']).strip(),
-        "answer": str(row['Response']).strip()
+services = []
+for _, row in df.iterrows():
+    services.append({
+        "title": str(row["Input"]).strip(),
+        "description": str(row["Response"]).strip()
     })
 
-# Write to JSON file
-with open(json_file, 'w', encoding='utf-8') as f:
-    json.dump(formatted_data, f, indent=2)
+# Save to JSON
+with open("services.json", "w", encoding="utf-8") as f:
+    json.dump(services, f, indent=2, ensure_ascii=False)
 
-print(f"Converted {excel_file} to {json_file} successfully.")
+print("✅ Converted Excel to services.json")
+
+

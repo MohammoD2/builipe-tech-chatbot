@@ -1,6 +1,6 @@
-streamlit
 pandas
+fastapi
 sentence-transformers
 scikit-learn
-openai
+uvicorn
 openpyxl
