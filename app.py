@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 # Load data
 def load_data():
-    return pd.read_excel("data.xlsx")[["Input", "Response"]].dropna()
+    return pd.read_excel("chatbot_data_main.xlsx")[["Input", "Response"]].dropna()
 
 df = load_data()
 
